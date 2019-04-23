@@ -11,7 +11,7 @@ import java.util.concurrent.CountDownLatch;
  * @author: zhoujian
  * @Date: 2019/4/18 17:21
  * @Company: youanmi.
- * @Desc:
+ * @Desc 让线程串行的方式 1 sleep 2 join 3 countdownlanch
  */
  public class Clock {
 
