@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cancer.star.db.mapper.AppointmentMapper">
+  <resultMap id="BaseResultMap" type="com.cancer.star.db.entity.Appointment">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="user_id" jdbcType="BIGINT" property="userId" />
+    <result column="mobile" jdbcType="VARCHAR" property="mobile" />
+    <result column="gender" jdbcType="BIT" property="gender" />
+    <result column="status" jdbcType="BIT" property="status" />
+    <result column="appointment_date" jdbcType="DATE" property="appointmentDate" />
+    <result column="appointment_start_dt" jdbcType="TIMESTAMP" property="appointmentStartDt" />
+    <result column="appointment_end_dt" jdbcType="TIMESTAMP" property="appointmentEndDt" />
+    <result column="is_delete" jdbcType="BIT" property="isDelete" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+  </resultMap>
+  <resultMap id="BaseResultMap" type="com.cancer.star.db.entity.Appointment">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="user_id" jdbcType="BIGINT" property="userId" />
+    <result column="gender" jdbcType="TINYINT" property="gender" />
+    <result column="mobile" jdbcType="VARCHAR" property="mobile" />
+    <result column="appointment_date" jdbcType="BIGINT" property="appointmentDate" />
+    <result column="appointment_start_dt" jdbcType="BIGINT" property="appointmentStartDt" />
+    <result column="appointment_end_dt" jdbcType="BIGINT" property="appointmentEndDt" />
+    <result column="is_delete" jdbcType="TINYINT" property="isDelete" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+  </resultMap>
+</mapper>

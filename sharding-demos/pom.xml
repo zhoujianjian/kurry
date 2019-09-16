@@ -9,6 +9,12 @@
     <version>1.0-SNAPSHOT</version>
 
 
+    <modules>
+        <module>cancer-star</module>
+        <module>cancer-share</module>
+        <module>cancer-shardingsphere</module>
+    </modules>
+
     <properties>
         <java.version>1.7</java.version>
         <spring-boot-starter-parent-version>2.0.3.RELEASE</spring-boot-starter-parent-version>

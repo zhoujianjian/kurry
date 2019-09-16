@@ -1,0 +1,64 @@
+#web端口
+server:
+  port: 8086
+
+#数据源设置
+spring:
+  datasource:
+      driver-class-name:  com.mysql.jdbc.Driver
+      url: jdbc:mysql://172.168.30.215:3306/app_star?useUnicode :true&characterEncoding :utf8
+      username: cjw
+      password: cjw
+
+spring.http.encoding.charset: UTF-8
+spring.http.encoding.force: true
+#spring.redis.cluster.nodes: 127.0.0.1:6379
+#spring.redis.cluster.maxRedirects: 1
+
+# Redis_config
+# Redis数据库索引（默认为0）
+spring.redis.database: 3
+# Redis服务器地址
+spring.redis.host: 127.0.0.1
+# Redis服务器连接端口
+spring.redis.port: 6379
+# Redis服务器连接密码（默认为空）
+spring.redis.password :
+# 连接超时时间（毫秒）
+spring.redis.timeout: 3600
+# 连接池最大连接数（使用负值表示没有限制）
+spring.redis.jedis.pool.max-active: 8
+# 连接池最大阻塞等待时间（使用负值表示没有限制）
+spring.redis.jedis.pool.max-wait: -1
+# jedis超时
+spring.redis.jedis.shutdown-timeout : 100
+# 连接池中的最大空闲连接
+spring.redis.jedis.pool.max-idle : 8
+# 连接池中的最小空闲连接
+spring.redis.jedis.pool.min-idle : 0
+
+
+
+#分页插件设置
+pagehelper:
+      helperDialect: mysql
+      reasonable: true
+      supportMethodsArguments: true
+      pageSizeZero: true
+      params: count :countSql
+
+#日志
+logging:
+    level:
+        root: warn
+        org.springframework.web: info
+        org.apache.ibatis: warn
+        com.cancer.star: info
+    path: "./cancer/cancer-star/logs/"
+    file: "./cancer/cancer-star/logs/cancer-star.log"
+    pattern:
+        console: "%d %-5level %logger : %msg%n"
+        file: "%d %-5level [%thread] %logger : %msg%n"
+
+
+

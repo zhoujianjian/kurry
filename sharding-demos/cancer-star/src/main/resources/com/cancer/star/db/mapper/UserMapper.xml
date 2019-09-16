@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cancer.star.db.mapper.UserMapper">
+  <resultMap id="BaseResultMap" type="com.cancer.star.db.entity.User">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="mobile" jdbcType="VARCHAR" property="mobile" />
+    <result column="gender" jdbcType="BIT" property="gender" />
+    <result column="head_icon" jdbcType="VARCHAR" property="headIcon" />
+    <result column="pwd" jdbcType="VARCHAR" property="pwd" />
+    <result column="birthday" jdbcType="DATE" property="birthday" />
+    <result column="login_time" jdbcType="TIMESTAMP" property="loginTime" />
+    <result column="is_delete" jdbcType="BIT" property="isDelete" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+  </resultMap>
+  <resultMap id="BaseResultMap" type="com.cancer.star.db.entity.User">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="nick_name" jdbcType="VARCHAR" property="nickName" />
+    <result column="mobile" jdbcType="VARCHAR" property="mobile" />
+    <result column="gender" jdbcType="TINYINT" property="gender" />
+    <result column="head_icon" jdbcType="VARCHAR" property="headIcon" />
+    <result column="pwd" jdbcType="VARCHAR" property="pwd" />
+    <result column="born_date" jdbcType="DATE" property="bornDate" />
+    <result column="is_delete" jdbcType="TINYINT" property="isDelete" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+  </resultMap>
+</mapper>

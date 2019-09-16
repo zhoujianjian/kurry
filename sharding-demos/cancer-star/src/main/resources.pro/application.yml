@@ -1,0 +1,30 @@
+#web端口
+server:
+  port: 8080
+
+#数据源设置
+spring:
+  datasource:
+      driver-class-name:  com.mysql.jdbc.Driver
+      url: jdbc:mysql://172.168.30.215:3306/app_star?useUnicode=true&characterEncoding=utf8
+      username: cjw
+      password: cjw
+
+#分页插件设置
+pagehelper:
+      helperDialect: mysql
+      reasonable: true
+      supportMethodsArguments: true
+      pageSizeZero: true
+      params: count=countSql
+
+#日志
+logging:
+    level:
+        root: error
+        org.springframework.web: info
+        org.apache.ibatis: debug
+        com.cancer.star: debug
+    path: "./cancer/cancer-star/logs/"
+    file: "./cancer/cancer-star/logs/cancer-star.log"
+
