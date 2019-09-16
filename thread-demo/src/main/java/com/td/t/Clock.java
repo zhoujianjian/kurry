@@ -1,6 +1,5 @@
-package com.td;
+package com.td.t;
 
-import lombok.extern.slf4j.Slf4j;
 import org.junit.Test;
 
 import java.text.SimpleDateFormat;

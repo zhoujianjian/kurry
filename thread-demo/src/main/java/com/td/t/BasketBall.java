@@ -1,4 +1,4 @@
-package com.td;
+package com.td.t;
 
 import org.junit.Test;
 

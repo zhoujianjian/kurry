@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>com.zj</groupId>
+    <artifactId>sharding-demo</artifactId>
+    <version>1.0-SNAPSHOT</version>
+
+
+    <properties>
+        <java.version>1.7</java.version>
+        <spring-boot-starter-parent-version>2.0.3.RELEASE</spring-boot-starter-parent-version>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <sharding-jdbc.version>1.5.4</sharding-jdbc.version>
+        <mybatis.page.version>4.1.6</mybatis.page.version>
+        <mybatis.version>3.4.0</mybatis.version>
+        <durid.version>1.1.8</durid.version>
+        <mysql.driver.version>5.1.34</mysql.driver.version>
+        <mybatis.maven.version>1.3.2</mybatis.maven.version>
+        <spring.mybatis.version>1.1.1</spring.mybatis.version>
+        <log4j.version>1.3.8.RELEASE</log4j.version>
+        <tk.mybatis.version>3.3.9</tk.mybatis.version>
+        <persistence.version>1.0</persistence.version>
+        <sharding-sphere.version>3.0.0.M2</sharding-sphere.version>
+        <mysql-connector-java.version>5.1.30</mysql-connector-java.version>
+        <mapper-spring-boot-starter-tk-mybatis.version>2.0.0</mapper-spring-boot-starter-tk-mybatis.version>
+        <pagehelper-spring-boot-starter.version>1.2.3</pagehelper-spring-boot-starter.version>
+        <fastjson.version>1.2.33</fastjson.version>
+
+        <com-zj-common.version>1.0-SNAPSHOT</com-zj-common.version>
+        <mybatis-spring-boot-starter.version>1.3.1</mybatis-spring-boot-starter.version>
+        <javax.el.version>3.0.1-b08</javax.el.version>
+        <ehcache-version>2.10.5</ehcache-version>
+        <lombok-version>1.18.0</lombok-version>
+        <redis-client-version>2.9.0</redis-client-version>
+        <jackson-dataformat-yaml-version>2.9.6</jackson-dataformat-yaml-version>
+        <swagger-version>2.6.1</swagger-version>
+
+    </properties>
+
+    <parent>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>1.4.7.RELEASE</version>
+    </parent>
+
+
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>org.mybatis.spring.boot</groupId>
+                <artifactId>mybatis-spring-boot-starter</artifactId>
+                <version>${mybatis-spring-boot-starter.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.alibaba</groupId>
+                <artifactId>druid</artifactId>
+                <version>${durid.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>mysql</groupId>
+                <artifactId>mysql-connector-java</artifactId>
+                <version>${mysql-connector-java.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>tk.mybatis</groupId>
+                <artifactId>mapper-spring-boot-starter</artifactId>
+                <version>${mapper-spring-boot-starter-tk-mybatis.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>javax.persistence</groupId>
+                <artifactId>persistence-api</artifactId>
+                <version>${persistence.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.github.pagehelper</groupId>
+                <artifactId>pagehelper-spring-boot-starter</artifactId>
+                <version>${pagehelper-spring-boot-starter.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.alibaba</groupId>
+                <artifactId>fastjson</artifactId>
+                <version>${fastjson.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.zj</groupId>
+                <artifactId>commons</artifactId>
+                <version>${com-zj-common.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.glassfish</groupId>
+                <artifactId>javax.el</artifactId>
+                <version>${javax.el.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.projectlombok</groupId>
+                <artifactId>lombok</artifactId>
+                <version>${lombok-version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>net.sf.ehcache</groupId>
+                <artifactId>ehcache</artifactId>
+                <version>${ehcache-version}</version>
+            </dependency>
+
+            <dependency>  <!-- 加上这个才能辨认到log4j2.yml文件 -->
+                <groupId>com.fasterxml.jackson.dataformat</groupId>
+                <artifactId>jackson-dataformat-yaml</artifactId>
+                <version>${jackson-dataformat-yaml-version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>redis.clients</groupId>
+                <artifactId>jedis</artifactId>
+                <version>${redis-client-version}</version>
+            </dependency>
+
+
+
+            <dependency>
+                <groupId>io.springfox</groupId>
+                <artifactId>springfox-swagger2</artifactId>
+                <version>${swagger-version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>io.springfox</groupId>
+                <artifactId>springfox-swagger-ui</artifactId>
+                <version>${swagger-version}</version>
+            </dependency>
+        </dependencies>
+
+
+
+
+    </dependencyManagement>
+
+
+</project>

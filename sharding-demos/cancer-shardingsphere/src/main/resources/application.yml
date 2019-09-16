@@ -1,0 +1,46 @@
+#web端口
+server:
+  port: 8888
+
+
+#数据源设置
+spring0:
+  datasource:
+    driver-class-name:  com.mysql.jdbc.Driver
+    url: jdbc:mysql://172.168.30.215:3306/ds_0?useUnicode=true&characterEncoding=utf8
+    username: cjw
+    password: cjw
+
+spring1:
+  datasource:
+    driver-class-name:  com.mysql.jdbc.Driver
+    url: jdbc:mysql://172.168.30.215:3306/ds_1?useUnicode=true&characterEncoding=utf8
+    username: cjw
+    password: cjw
+
+
+
+
+
+
+#分页插件设置
+pagehelper:
+      helperDialect: mysql
+      reasonable: true
+      supportMethodsArguments: true
+      pageSizeZero: true
+      params: count=countSql
+
+#日志
+logging:
+    level:
+        root: error
+        org.springframework.web: info
+        org.apache.ibatis: debug
+        com.cancer.sphere: debug
+    path: "./cancer/cancer-shardingsphere/logs/"
+    file: "./cancer/cancer-shardingsphere/logs/cancer-shardingsphere.log"
+
+
+
+
