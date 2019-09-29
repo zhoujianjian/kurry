@@ -1,6 +1,8 @@
 package com.zj.nacos.one.http;
 
 import com.alibaba.nacos.api.config.annotation.NacosValue;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 /**
  * @author: zhoujian
@@ -8,12 +10,13 @@ import com.alibaba.nacos.api.config.annotation.NacosValue;
  * @Company: youanmi.
  * @Desc:
  */
+
 public class TestNacosConfigController {
 
     @NacosValue(value = "${useLocalCache:false}", autoRefreshed = true)
     private boolean useLocalCache;
 
-    @RequestMapping(value = "/get", method = GET)
+    @GetMapping(value = "/get")
     @ResponseBody
     public boolean get() {
         return useLocalCache;
