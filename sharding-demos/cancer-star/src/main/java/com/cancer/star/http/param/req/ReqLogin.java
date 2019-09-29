@@ -1,7 +1,8 @@
 package com.cancer.star.http.param.req;
 
-import com.cancer.commons.plugins.validation.base.Insert;
-import com.cancer.commons.plugins.validation.base.Update;
+
+import com.cancer.star.common.param.Insert;
+import com.cancer.star.common.param.Update;
 import lombok.Data;
 import javax.validation.constraints.NotNull;
 import java.io.Serializable;

@@ -2,7 +2,8 @@ package com.cancer.star.http.controller;
 
 import com.cancer.commons.api.APIResponse;
 import com.cancer.commons.api.enums.ApiResponseEnum;
-import com.cancer.commons.plugins.validation.base.Update;
+import com.cancer.star.common.param.Insert;
+import com.cancer.star.common.param.Update;
 import com.cancer.star.db.entity.User;
 import com.cancer.star.http.param.req.ReqLogin;
 import com.cancer.star.service.UserService;
@@ -45,6 +46,11 @@ public class UserController {
 
     @RequestMapping("update")
     public APIResponse  update (@Validated( Update.class) @RequestBody ReqLogin reqLogin){
+        return APIResponse.returnSuccess();
+    }
+
+    @RequestMapping("insert")
+    public APIResponse  insert (@Validated( Insert.class) @RequestBody ReqLogin reqLogin){
         return APIResponse.returnSuccess();
     }
 }
