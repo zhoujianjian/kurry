@@ -5,7 +5,6 @@ import com.github.rholder.retry.RetryerBuilder;
 import com.github.rholder.retry.StopStrategies;
 import com.github.rholder.retry.WaitStrategies;
 import com.zj.grab.dto.CrawlerProductDto;
-import lombok.extern.slf4j.Slf4j;
 
 import java.io.IOException;
 import java.util.concurrent.TimeUnit;
@@ -22,6 +21,13 @@ public abstract class GrabGoodService {
      * @param code
      */
     protected abstract CrawlerProductDto grab( String code ) throws IOException;
+
+    /**
+     * 解析淘宝/天猫口令
+     * @param code
+     * @return
+     */
+    public abstract String parseGetGoodId(String code );
 
 
     /**

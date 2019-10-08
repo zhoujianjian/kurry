@@ -5,6 +5,7 @@ import com.zj.grab.service.GrabGoodService;
 import com.zj.grab.service.impl.BarCodeServiceImpl;
 import com.zj.grab.service.impl.JdGrabServiceImpl;
 import com.zj.grab.service.impl.PddGrabServiceImpl;
+import com.zj.grab.service.impl.TbGrabServiceImpl;
 import javafx.application.Application;
 import org.apache.commons.lang3.StringUtils;
 
@@ -75,7 +76,7 @@ public enum GrabGoodEnum {
         int type = grabGoodEnum.getType();
         GrabGoodService grabGoodService = null;
         if (GrabGoodEnum.TB.type == type || GrabGoodEnum.TM.type == type) {
-
+            grabGoodService = new TbGrabServiceImpl();
         } else if (GrabGoodEnum.JD.type == type  ){
             grabGoodService = new JdGrabServiceImpl();
         } else if (GrabGoodEnum.PDD.type == type  ){

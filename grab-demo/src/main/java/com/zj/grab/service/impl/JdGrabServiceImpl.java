@@ -1,27 +1,23 @@
 package com.zj.grab.service.impl;
 
-import cn.hutool.http.HttpRequest;
 import cn.hutool.http.HttpUtil;
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
+import com.github.rholder.retry.Retryer;
+import com.github.rholder.retry.RetryerBuilder;
+import com.github.rholder.retry.StopStrategies;
+import com.github.rholder.retry.WaitStrategies;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.zj.grab.dto.CrawlerProductDto;
 import com.zj.grab.dto.jd.JdProductPriceResp;
 import com.zj.grab.service.GrabGoodService;
+import org.apache.commons.lang3.StringUtils;
 import org.jsoup.Connection;
 import org.jsoup.helper.HttpConnection;
 import org.jsoup.nodes.Document;
-import org.apache.commons.lang3.StringUtils;
-import com.github.rholder.retry.Retryer;
-import com.github.rholder.retry.RetryerBuilder;
-import com.github.rholder.retry.StopStrategies;
-import com.github.rholder.retry.WaitStrategies;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
-import org.springframework.web.client.RestTemplate;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -40,12 +36,11 @@ import java.util.regex.Pattern;
  */
 public class JdGrabServiceImpl extends GrabGoodService {
 
-    @Autowired
-    private RestTemplate restTemplate;
 
-    Pattern p = Pattern.compile("https.+?jpg");
-    Pattern p1 = Pattern.compile("//img.+?jpg");
-    Pattern pdata = Pattern.compile("data-lazyload=.+?jpg");
+
+   final Pattern p = Pattern.compile("https.+?jpg");
+    final   Pattern p1 = Pattern.compile("//img.+?jpg");
+    final  Pattern pdata = Pattern.compile("data-lazyload=.+?jpg");
 
     public Document getJdDocument( String jdUrl ) throws Exception{
         Connection con = HttpConnection.connect(jdUrl);
@@ -93,6 +88,13 @@ public class JdGrabServiceImpl extends GrabGoodService {
 
         return list;
     }
+
+
+    @Override
+    public String parseGetGoodId(String code) {
+        return code.substring(code.lastIndexOf("/") + 1, code.lastIndexOf(".html"));
+    }
+
 
     @Override
     public CrawlerProductDto grab( String jdUrl ) {
@@ -159,10 +161,7 @@ public class JdGrabServiceImpl extends GrabGoodService {
                 html = html.substring(0, html.indexOf(",") - 1);
             }
         }
-
-        HttpRequest httpRequest = HttpUtil.createGet("https://"+html);
-        ResponseEntity<String> forEntity22 = restTemplate.getForEntity("https://" + html, String.class);
-        String body = forEntity22.getBody();
+        String body =  HttpUtil.get("https://"+html);
         if (body.substring(0,1).equals("(")){
             body = body.substring(body.indexOf("(")+1,body.lastIndexOf(")"));
         }
@@ -256,12 +255,12 @@ public class JdGrabServiceImpl extends GrabGoodService {
         JdProductPriceResp s = new JdProductPriceResp();
         if( StringUtils.isNotBlank(sku)){
             String priceUrlsku = "https://p.3.cn/prices/mgets?pduid=" + Math.random() + "&skuIds=J_" + sku;
-            ResponseEntity<String> pk = restTemplate.getForEntity(priceUrlsku, String.class);
-            if ( pk.getBody().equals("{\"error\":\"pdos_captcha\"}\n")){
+            String body =  HttpUtil.get(priceUrlsku);
+            if (body.equals("{\"error\":\"pdos_captcha\"}\n")){
                 return null;
             }
             Gson gsonpk = new GsonBuilder().create();
-            List<Map<String, String>> listpk = gsonpk.fromJson(pk.getBody(), List.class);
+            List<Map<String, String>> listpk = gsonpk.fromJson(body, List.class);
             s.setOriginPrice(listpk.get(0).get("op"));
             s.setPrice(listpk.get(0).get("p"));
         }

@@ -27,6 +27,20 @@ import java.util.stream.Collectors;
  public class PddGrabServiceImpl extends GrabGoodService {
 
     @Override
+    public String parseGetGoodId(String command) {
+        String goodId = null;
+        String tempgoods = command.split("goods_id=")[1];
+        String reg ="\\d+\\.{0,1}\\d*";
+        boolean isDigits = tempgoods.matches(reg);
+        if(isDigits){
+            goodId =  tempgoods;
+        }else {
+            goodId = tempgoods.substring(0, tempgoods.indexOf("&"));
+        }
+        return goodId;
+    }
+
+    @Override
     public CrawlerProductDto grab(String url) throws  IOException {
         try {
             Connection con = HttpConnection.connect(url);

@@ -18,6 +18,10 @@ import java.util.List;
  */
 public class BarCodeServiceImpl extends GrabGoodService {
 
+    @Override
+    public String parseGetGoodId(String code) {
+        return code;
+    }
 
     @Override
     public CrawlerProductDto grab(String barCode) throws IOException{
