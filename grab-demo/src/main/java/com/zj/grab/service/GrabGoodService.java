@@ -1,10 +1,13 @@
 package com.zj.grab.service;
 
-import com.github.rholder.retry.*;
+import com.github.rholder.retry.Retryer;
+import com.github.rholder.retry.RetryerBuilder;
+import com.github.rholder.retry.StopStrategies;
+import com.github.rholder.retry.WaitStrategies;
 import com.zj.grab.dto.CrawlerProductDto;
+import lombok.extern.slf4j.Slf4j;
 
 import java.io.IOException;
-import java.util.concurrent.ExecutionException;
 import java.util.concurrent.TimeUnit;
 
 /**
@@ -33,9 +36,7 @@ public abstract class GrabGoodService {
                .build();
        try {
            retryer.call(() -> this.grab(code));
-       } catch (ExecutionException e) {
-           e.printStackTrace();
-       } catch (RetryException e) {
+       } catch (Exception e) {
            e.printStackTrace();
        }
        return null;

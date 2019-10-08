@@ -5,6 +5,7 @@ import com.zj.grab.service.GrabGoodService;
 import com.zj.grab.service.impl.BarCodeServiceImpl;
 import com.zj.grab.service.impl.JdGrabServiceImpl;
 import com.zj.grab.service.impl.PddGrabServiceImpl;
+import javafx.application.Application;
 import org.apache.commons.lang3.StringUtils;
 
 import java.util.Collections;

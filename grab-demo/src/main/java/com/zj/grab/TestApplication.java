@@ -13,9 +13,7 @@ public class TestApplication {
 
 
     public static void main(String[] args) {
-
       GrabGoodService grabGoodService =  GrabGoodEnum.getGrabGoodService(GrabGoodEnum.BAR_CODE);
-
-        grabGoodService.grabGoods("6922266454295");
+      grabGoodService.grabGoods("6922266454295");
     }
 }

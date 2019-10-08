@@ -3,10 +3,6 @@ package com.zj.grab.service.impl;
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
-import com.github.rholder.retry.Retryer;
-import com.github.rholder.retry.RetryerBuilder;
-import com.github.rholder.retry.StopStrategies;
-import com.github.rholder.retry.WaitStrategies;
 import com.zj.grab.dto.CrawlerProductDto;
 import com.zj.grab.service.GrabGoodService;
 import lombok.extern.slf4j.Slf4j;
@@ -20,7 +16,6 @@ import org.springframework.util.CollectionUtils;
 
 import java.io.IOException;
 import java.util.*;
-import java.util.concurrent.TimeUnit;
 import java.util.stream.Collectors;
 
 /**
@@ -29,14 +24,10 @@ import java.util.stream.Collectors;
  * @Company: youanmi.
  * @Desc:
  */
-@Slf4j
-public class PddGrabServiceImpl extends GrabGoodService {
-
-
-
+ public class PddGrabServiceImpl extends GrabGoodService {
 
     @Override
-    public CrawlerProductDto grab(String url) throws IOException {
+    public CrawlerProductDto grab(String url) throws  IOException {
         try {
             Connection con = HttpConnection.connect(url);
             con.header("Host", "mobile.yangkeduo.com");
