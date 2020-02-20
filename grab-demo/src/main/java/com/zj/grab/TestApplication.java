@@ -12,9 +12,14 @@ import com.zj.grab.service.GrabGoodService;
 public class TestApplication {
 
 
+
+
     public static void main(String[] args) {
-//        GrabGoodService barCodeService = GrabGoodEnum.getGrabGoodService(GrabGoodEnum.BAR_CODE);
-//        barCodeService.grabGoods("6922266454295");
+
+
+
+        GrabGoodService barCodeService = GrabGoodEnum.getGrabGoodService(GrabGoodEnum.BAR_CODE);
+        barCodeService.grabGoods("6922266454295");
 
 
         GrabGoodService tbService = GrabGoodEnum.getGrabGoodService(GrabGoodEnum.TB);

@@ -5,7 +5,6 @@ import com.github.rholder.retry.RetryerBuilder;
 import com.github.rholder.retry.StopStrategies;
 import com.github.rholder.retry.WaitStrategies;
 import com.zj.grab.dto.CrawlerProductDto;
-
 import java.io.IOException;
 import java.util.concurrent.TimeUnit;
 

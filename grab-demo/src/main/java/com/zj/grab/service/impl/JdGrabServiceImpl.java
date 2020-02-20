@@ -1,12 +1,7 @@
 package com.zj.grab.service.impl;
-
 import cn.hutool.http.HttpUtil;
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
-import com.github.rholder.retry.Retryer;
-import com.github.rholder.retry.RetryerBuilder;
-import com.github.rholder.retry.StopStrategies;
-import com.github.rholder.retry.WaitStrategies;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.zj.grab.dto.CrawlerProductDto;
@@ -18,12 +13,11 @@ import org.jsoup.helper.HttpConnection;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
-
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.Objects;
-import java.util.concurrent.TimeUnit;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -35,37 +29,17 @@ import java.util.regex.Pattern;
  * @Desc:通过京东分享网址爬取商品信息
  */
 public class JdGrabServiceImpl extends GrabGoodService {
-
-
-
-   final Pattern p = Pattern.compile("https.+?jpg");
-    final   Pattern p1 = Pattern.compile("//img.+?jpg");
-    final  Pattern pdata = Pattern.compile("data-lazyload=.+?jpg");
-
-    public Document getJdDocument( String jdUrl ) throws Exception{
-        Connection con = HttpConnection.connect(jdUrl);
-        con.header("Host", "item.jd.com");
-        return con.get();
-    }
-
-    public Document getRetryDocument(String jdUrl) {
-        try {
-            Retryer<Document> retryer = RetryerBuilder.<Document>newBuilder().retryIfException()
-                    .withWaitStrategy(WaitStrategies.fixedWait(0, TimeUnit.MILLISECONDS))
-                    .withStopStrategy(StopStrategies.stopAfterAttempt(5))
-                    .build();
-            return   retryer.call(() -> getJdDocument(jdUrl));
-        } catch (Exception e) {
-            return null;
-        }
-    }
+    private static final String JD_URL_PREFIX ="https://item.jd.com/";
 
     private List<String> getJdImgUrlByPattern(String content) {
         List<String> list = new ArrayList<>();
         if (content.indexOf("background-image:url(") > -1) {
-
+            String regexjpg = "https.+?jpg";
+            Pattern p = Pattern.compile(regexjpg);
             Matcher m = p.matcher(content);
 
+            String regexIMGjpg = "//img.+?jpg";
+            Pattern p1 = Pattern.compile(regexIMGjpg);
 
             Matcher m1 = p1.matcher(content);
 
@@ -79,7 +53,8 @@ public class JdGrabServiceImpl extends GrabGoodService {
         }
 
         if (content.indexOf("data-lazyload=") > -1) {
-
+            String regexDat = "data-lazyload=.+?jpg";
+            Pattern pdata = Pattern.compile(regexDat);
             Matcher m = pdata.matcher(content);
             while (m.find()) {
                 list.add(content.substring(m.start() + 17, m.end()));
@@ -97,15 +72,18 @@ public class JdGrabServiceImpl extends GrabGoodService {
 
 
     @Override
-    public CrawlerProductDto grab( String jdUrl ) {
-        if ( jdUrl.contains("Wxfriends") || jdUrl.contains("CopyURL")){
-            StringBuffer sb = new StringBuffer("https://item.jd.com");
-            sb.append(StringUtils.substring(jdUrl,jdUrl.lastIndexOf("/"),jdUrl.indexOf("?")));
-            jdUrl = sb.toString();
+    public CrawlerProductDto grab( String jdUrl ) throws IOException{
+        String regex = "[0-9]+.*.html";
+        Pattern pattern = Pattern.compile(regex);
+        Matcher matcher = pattern.matcher(jdUrl );
+        if (matcher.find()) {
+            String html = matcher.group(0);
+            jdUrl = JD_URL_PREFIX+html;
         }
-        Document document = getRetryDocument(jdUrl);
+        Connection con = HttpConnection.connect(jdUrl);
+        con.header("Host", "item.jd.com");
+        Document document = con.get();
         CrawlerProductDto result = new CrawlerProductDto();
-
         Elements selectSkuName = document.select("div.sku-name");
         if ( selectSkuName!=null && selectSkuName.size() > 0 ){
             String title = selectSkuName.get(0).text();
