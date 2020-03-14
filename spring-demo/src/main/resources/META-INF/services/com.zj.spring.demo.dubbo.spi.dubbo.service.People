@@ -1,0 +1,4 @@
+big=com.zj.spring.demo.dubbo.spi.dubbo.service.impl.BigPeople
+little=com.zj.spring.demo.dubbo.spi.dubbo.service.impl.LittlePeople
+
+wraper1=com.zj.spring.demo.dubbo.spi.dubbo.service.impl.wrapper.BigPeopleWrapper
