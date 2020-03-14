@@ -1,4 +1,4 @@
-package com.zj.spring.demo.BeanFactoryPostProcessTest;
+package com.zj.spring.demo.spring.BeanFactoryPostProcessTest;
 
 import org.springframework.stereotype.Component;
 

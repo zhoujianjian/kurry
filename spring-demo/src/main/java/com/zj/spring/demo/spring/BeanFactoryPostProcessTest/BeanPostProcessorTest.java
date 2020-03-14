@@ -1,4 +1,4 @@
-package com.zj.spring.demo.BeanFactoryPostProcessTest;
+package com.zj.spring.demo.spring.BeanFactoryPostProcessTest;
 
 import org.springframework.beans.BeansException;
 import org.springframework.beans.factory.config.BeanPostProcessor;

@@ -1,6 +1,5 @@
 package com.zj.spring.demo;
 
-import com.zj.spring.demo.BeanFactoryPostProcessTest.TestA;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.context.annotation.ComponentScan;
 
