@@ -36,13 +36,13 @@ public class BeanFactoryPostTest implements BeanFactoryPostProcessor {
        System.out.println(testABeanDefinition.getBeanClassName());
 
 
-        RootBeanDefinition rootBeanDefinition = (RootBeanDefinition)configurableListableBeanFactory.getBeanDefinition("testA");
-        rootBeanDefinition.setAutowireMode(1);
-
-        GenericBeanDefinition genericBeanDefinition =(GenericBeanDefinition)configurableListableBeanFactory.getBeanDefinition("testA");
-        ConstructorArgumentValues constructorArgumentValues = new ConstructorArgumentValues();
-        //constructorArgumentValues.addArgumentValues();
-        genericBeanDefinition.setConstructorArgumentValues(constructorArgumentValues);
+//        RootBeanDefinition rootBeanDefinition = (RootBeanDefinition)configurableListableBeanFactory.getBeanDefinition("testA");
+//        rootBeanDefinition.setAutowireMode(1);
+//
+//        GenericBeanDefinition genericBeanDefinition =(GenericBeanDefinition)configurableListableBeanFactory.getBeanDefinition("testA");
+//        ConstructorArgumentValues constructorArgumentValues = new ConstructorArgumentValues();
+//        //constructorArgumentValues.addArgumentValues();
+//        genericBeanDefinition.setConstructorArgumentValues(constructorArgumentValues);
     }
 
 

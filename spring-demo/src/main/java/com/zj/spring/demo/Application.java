@@ -9,7 +9,7 @@ import org.springframework.context.annotation.ComponentScan;
 
     public static void main(String[] args) {
         AnnotationConfigApplicationContext applicationContext = new AnnotationConfigApplicationContext(Application.class);
-        TestA testA = (TestA)applicationContext.getBean("testA");
+        //TestA testA = (TestA)applicationContext.getBean("testA");
 
 
     }
