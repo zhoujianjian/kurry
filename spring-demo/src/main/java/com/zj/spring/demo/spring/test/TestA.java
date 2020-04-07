@@ -1,4 +1,4 @@
-package com.zj.spring.demo.spring.BeanFactoryPostProcessTest;
+package com.zj.spring.demo.spring.test;
 
 import org.springframework.stereotype.Component;
 
@@ -7,6 +7,6 @@ public class TestA {
 
     public TestA() {
 
-        System.out.println("111111111111111111111");
+        System.out.println("TestA被实例化了");
     }
 }

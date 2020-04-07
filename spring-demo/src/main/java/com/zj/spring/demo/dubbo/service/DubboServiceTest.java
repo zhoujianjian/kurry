@@ -1,4 +1,4 @@
-package com.zj.spring.demo.dubbo;
+package com.zj.spring.demo.dubbo.service;
 
 import org.apache.dubbo.rpc.model.ApplicationInitListener;
 import org.springframework.beans.BeansException;
@@ -21,29 +21,36 @@ import org.springframework.stereotype.Component;
 @Component
 public class DubboServiceTest implements ApplicationContextAware,BeanNameAware,InitializingBean ,ApplicationListener,DisposableBean {
 
+    private DubboServiceTest service;
 
-    @Override
-    public void setBeanName(String s) {
-     System.out.println("setBeanName");
+    public DubboServiceTest() {
+
+        System.out.println("DubboServiceTest 实例化");
+        this.service = null;
     }
 
     @Override
-    public void setApplicationContext(ApplicationContext applicationContext) throws BeansException {
-        System.out.println("applicationContext");
+    public void setBeanName(String s) {
+     System.out.println("BeanNameAware  setBeanName");
+    }
+
+    @Override
+    public void setApplicationContext(ApplicationContext setApplicationContext) throws BeansException {
+        System.out.println("ApplicationContextAware  applicationContext");
     }
 
     @Override
     public void afterPropertiesSet() throws Exception {
-        System.out.println("afterPropertiesSet");
+        System.out.println("InitializingBean   afterPropertiesSet");
     }
 
     @Override
     public void onApplicationEvent(ApplicationEvent applicationEvent) {
-        System.out.println("onApplicationEvent");
+        System.out.println("ApplicationListener  onApplicationEvent");
     }
 
     @Override
     public void destroy() throws Exception {
-
+        System.out.println("DisposableBean   afterPropertiesSet");
     }
 }

@@ -42,7 +42,6 @@ public class DubboSpiTest {
     }
 
     public static void main(String[] args) {
-        DubboSpiTest.byKey();
-
+        DubboSpiTest.bySpiDefaultKey();
     }
 }

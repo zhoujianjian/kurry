@@ -1,4 +1,4 @@
-package com.zj.spring.demo.spring.BeanFactoryPostProcessTest;
+package com.zj.spring.demo.spring.test;
 
 import org.springframework.beans.BeansException;
 import org.springframework.beans.factory.config.BeanDefinition;
@@ -29,8 +29,8 @@ public class BeanFactoryPostTest implements BeanFactoryPostProcessor {
     public void postProcessBeanFactory(ConfigurableListableBeanFactory configurableListableBeanFactory) throws BeansException {
 
        BeanDefinition testABeanDefinition = configurableListableBeanFactory.getBeanDefinition("testA");
-       //testABeanDefinition.setBeanClassName("com.zj.spring.demo.spring.BeanFactoryPostProcessTest.TestB");
-       System.out.println(testABeanDefinition.getBeanClassName());
+       //testABeanDefinition.setBeanClassName("com.zj.spring.demo.spring.test.TestB");
+       System.out.println("BeanFactoryPostProcessor"+testABeanDefinition.getBeanClassName());
 
 
 //        RootBeanDefinition rootBeanDefinition = (RootBeanDefinition)configurableListableBeanFactory.getBeanDefinition("testA");
