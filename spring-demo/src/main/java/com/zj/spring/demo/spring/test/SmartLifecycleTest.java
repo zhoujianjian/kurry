@@ -8,7 +8,7 @@ import org.springframework.stereotype.Component;
  * @Description: 描述
  * @Author: zhoujian
  * @Date: 2020/4/4$ 20:27$
- * @Version: 1.0   bean实例初始化之后   spring 容器启动之前 执行  start方法
+ * @Version: 1.0      spring 容器启动之前 执行  start方法
  */
 @Component
 public class SmartLifecycleTest implements SmartLifecycle {
