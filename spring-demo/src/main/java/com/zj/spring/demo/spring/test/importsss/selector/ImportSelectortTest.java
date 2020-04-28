@@ -14,4 +14,9 @@ public class ImportSelectortTest implements ImportSelector {
         String[] strings = {SelectorTestServiceOne.class.getName(), SelectorTestServiceTwo.class.getName()};
         return strings;
     }
+
+    public static void main(String[] args) {
+        String[] temp = "xxx^XX;
+
+    }
 }
