@@ -1,0 +1,9 @@
+spring:
+  data:
+    elasticsearch:
+      cluster-nodes: 172.168.30.178:9300
+      cluster-name: yam-es-application
+      repositories:
+        enabled: true
+
+

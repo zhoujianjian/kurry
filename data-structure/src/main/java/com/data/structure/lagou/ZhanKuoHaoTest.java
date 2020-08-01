@@ -30,13 +30,13 @@ public class ZhanKuoHaoTest {
             if (arr[idx] == '{' || arr[idx] == '(' || arr[idx] == '[') {
                 stack.push(arr[idx]);
             } else {
-                if(stack.charAt(i)==')'&&stack.pop()!='(') {
+                if(arr[idx]==')'&&stack.pop()!='(') {
                     return false;
                 }
-                if(stack.charAt(i)==']'&&stack.pop()!='[') {
+                if(arr[idx]==']'&&stack.pop()!='[') {
                     return false;
                 }
-                if(stack.charAt(i)=='}'&&stack.pop()!='{') {
+                if(arr[idx]=='}'&&stack.pop()!='{') {
                     return false;
                 }
              }
