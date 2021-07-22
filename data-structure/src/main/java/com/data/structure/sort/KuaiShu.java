@@ -17,7 +17,7 @@ public class KuaiShu {
 
 
     public static void kuaipai( int[] array ){
-
+   ///
 
     }
 
